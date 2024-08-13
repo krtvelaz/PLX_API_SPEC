@@ -1,0 +1,720 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Merchant",
+    "description": "Merchant Microservice Swagger",
+    "version": "v1"
+  },
+  "paths": {
+    "/v1/Merchant/Branch": {
+      "put": {
+        "tags": [
+          "Branch"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePointOfSaleInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePointOfSaleInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePointOfSaleInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/Merchant/Contact": {
+      "put": {
+        "tags": [
+          "Contact"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactoAffiliadoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactoAffiliadoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactoAffiliadoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/Merchant/Contract": {
+      "post": {
+        "tags": [
+          "Contract"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterAffiliateContractInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterAffiliateContractInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterAffiliateContractInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/Merchant": {
+      "put": {
+        "tags": [
+          "Merchant"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAffiliateInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAffiliateInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAffiliateInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AFILIADO": {
+        "type": "object",
+        "properties": {
+          "CODIGO_UNICO": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDTIPODOCUMENTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "NRODOCUMENTO": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Affiliate": {
+        "required": [
+          "IDTIPODOCUMENTO",
+          "NRODOCUMENTO"
+        ],
+        "type": "object",
+        "properties": {
+          "CODIGO_UNICO": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDTIPODOCUMENTO": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "NRODOCUMENTO": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CONTACTO": {
+        "type": "object",
+        "properties": {
+          "IDTIPOCONTACTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDTIPODOCUMENTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "NRODOCUMENTO": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "NOMBRE": {
+            "type": "string",
+            "nullable": true
+          },
+          "APELLIDO": {
+            "type": "string",
+            "nullable": true
+          },
+          "TELEFONOCONTACTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CARGOCONTACTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIRECCION": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDCIUDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "MAILCONTACTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "GENERO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CELULAR": {
+            "type": "string",
+            "nullable": true
+          },
+          "EXTENSION": {
+            "type": "string",
+            "nullable": true
+          },
+          "ESTADO": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ContactoAffiliadoDto": {
+        "type": "object",
+        "properties": {
+          "PROPIEDADES": {
+            "$ref": "#/components/schemas/PROPIEDADES"
+          },
+          "AFILIADO": {
+            "$ref": "#/components/schemas/AFILIADO"
+          },
+          "CONTACTO": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CONTACTO"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PROPIEDADES": {
+        "type": "object",
+        "properties": {
+          "SISTEMA_ORIGEN_PETICION": {
+            "type": "string",
+            "nullable": true
+          },
+          "OPERACION": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Properties": {
+        "required": [
+          "OPERACION",
+          "SISTEMA_ORIGEN_PETICION"
+        ],
+        "type": "object",
+        "properties": {
+          "SISTEMA_ORIGEN_PETICION": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "OPERACION": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "IDCUENTA": {
+            "type": "string",
+            "nullable": true
+          },
+          "ID_REG_ACTUALIZA_PUNTOVENTA": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterAffiliateContractAffiliate": {
+        "type": "object",
+        "properties": {
+          "IDAFILIADO_SALESFORCE": {
+            "type": "string",
+            "nullable": true
+          },
+          "CODIGO_UNICO": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDTIPODOCUMENTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "NRODOCUMENTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "RAZONSOCIAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "NOMBRECOMERCIAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIRECCIONPRINCIPAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDCIUDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "CODIGODPTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "FAX": {
+            "type": "string",
+            "nullable": true
+          },
+          "TELEFONO": {
+            "type": "string",
+            "nullable": true
+          },
+          "EMAIL": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDREGIMENTRIBUTARIO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CARACTERISTICAS_REGIMEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIGITOCHEQUEO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CODIGOACTIVIDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "NROMATRICULA": {
+            "type": "string",
+            "nullable": true
+          },
+          "FECHAREGIMEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "TIPOAFILIADO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CATEGORIAS": {
+            "$ref": "#/components/schemas/RegisterAffiliateContractCategories"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterAffiliateContractCategories": {
+        "type": "object",
+        "properties": {
+          "CATEGORIA": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterAffiliateContractContact": {
+        "type": "object",
+        "properties": {
+          "IDTIPOCONTACTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDTIPODOCUMENTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "NRODOCUMENTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "NOMBRE": {
+            "type": "string",
+            "nullable": true
+          },
+          "APELLIDO": {
+            "type": "string",
+            "nullable": true
+          },
+          "TELEFONOCONTACTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CARGOCONTACTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIRECCION": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDCIUDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "CODIGODPTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "MAILCONTACTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "GENERO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CELULAR": {
+            "type": "string",
+            "nullable": true
+          },
+          "EXTENSION": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterAffiliateContractContract": {
+        "type": "object",
+        "properties": {
+          "TIPOCOMISION": {
+            "type": "string",
+            "nullable": true
+          },
+          "COMISION": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDCONDICIONPAGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "FECHATERMINA": {
+            "type": "string",
+            "nullable": true
+          },
+          "NOMBRE_CONTRATO": {
+            "type": "string",
+            "nullable": true
+          },
+          "NROCONTRATO": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterAffiliateContractContractDetail": {
+        "type": "object",
+        "properties": {
+          "IDSALESFORCE": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDPRODUCTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "TIPOCOMISION": {
+            "type": "string",
+            "nullable": true
+          },
+          "COMISION": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDCONDICIONPAGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CANALTRANSACCIONAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "USUARIOINTERNO": {
+            "type": "string",
+            "nullable": true
+          },
+          "USUARIOEXTERNO": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterAffiliateContractInput": {
+        "type": "object",
+        "properties": {
+          "PROPIEDADES": {
+            "$ref": "#/components/schemas/RegisterAffiliateContractProperties"
+          },
+          "AFILIADO": {
+            "$ref": "#/components/schemas/RegisterAffiliateContractAffiliate"
+          },
+          "CONTRATO": {
+            "$ref": "#/components/schemas/RegisterAffiliateContractContract"
+          },
+          "DETALLECONTRATO": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegisterAffiliateContractContractDetail"
+            },
+            "nullable": true
+          },
+          "CONTACTO": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegisterAffiliateContractContact"
+            },
+            "nullable": true
+          },
+          "PUNTOVENTA": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterAffiliateContractProperties": {
+        "type": "object",
+        "properties": {
+          "SISTEMA_ORIGEN_PETICION": {
+            "type": "string",
+            "nullable": true
+          },
+          "OPERACION": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAffiliateInput": {
+        "required": [
+          "AFILIADO",
+          "PROPIEDADES"
+        ],
+        "type": "object",
+        "properties": {
+          "PROPIEDADES": {
+            "$ref": "#/components/schemas/UpdateAffiliateInputProperties"
+          },
+          "AFILIADO": {
+            "$ref": "#/components/schemas/UpdateAffiliateInputAffiliate"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAffiliateInputAffiliate": {
+        "required": [
+          "CODIGO_UNICO",
+          "IDTIPODOCUMENTO",
+          "NRODOCUMENTO"
+        ],
+        "type": "object",
+        "properties": {
+          "CODIGO_UNICO": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "IDTIPODOCUMENTO": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "NRODOCUMENTO": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "RAZONSOCIAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "NOMBRECOMERCIAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIRECCIONPRINCIPAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDCIUDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "CODIGODPTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "FAX": {
+            "type": "string",
+            "nullable": true
+          },
+          "TELEFONO": {
+            "type": "string",
+            "nullable": true
+          },
+          "EMAIL": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          },
+          "IDREGIMENTRIBUTARIO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CARACTERISTICAS_REGIMEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIGITOCHEQUEO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CODIGOACTIVIDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "CATEGORIAS": {
+            "$ref": "#/components/schemas/UpdateAffiliateInputCategories"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAffiliateInputCategories": {
+        "type": "object",
+        "properties": {
+          "CATEGORIA": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAffiliateInputProperties": {
+        "required": [
+          "OPERACION",
+          "SISTEMA_ORIGEN_PETICION"
+        ],
+        "type": "object",
+        "properties": {
+          "SISTEMA_ORIGEN_PETICION": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "OPERACION": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdatePointOfSaleInput": {
+        "required": [
+          "AFILIADO",
+          "PROPIEDADES",
+          "PUNTOVENTA"
+        ],
+        "type": "object",
+        "properties": {
+          "PROPIEDADES": {
+            "$ref": "#/components/schemas/Properties"
+          },
+          "AFILIADO": {
+            "$ref": "#/components/schemas/Affiliate"
+          },
+          "PUNTOVENTA": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

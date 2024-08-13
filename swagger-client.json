@@ -1,0 +1,1457 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Client",
+    "description": "Client Microservice Swagger",
+    "version": "v1"
+  },
+  "paths": {
+    "/v1/Client/Pricing": {
+      "post": {
+        "tags": [
+          "Client"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PricingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/Client": {
+      "put": {
+        "tags": [
+          "Client"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClientInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClientInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClientInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/Client/Contact": {
+      "put": {
+        "tags": [
+          "Client"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClientContactInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClientContactInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClientContactInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/Client/ContactSalesforce": {
+      "post": {
+        "tags": [
+          "Client"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClientContactInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClientContactInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateClientContactInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/v1/Client/Contract": {
+      "post": {
+        "tags": [
+          "Client"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterContractInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterContractInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterContractInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Cliente": {
+        "required": [
+          "CODIGO_UNICO"
+        ],
+        "type": "object",
+        "properties": {
+          "CODIGO_UNICO": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "ESTATAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "NROIDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DatosSimulador": {
+        "type": "object",
+        "properties": {
+          "Tipo_empresa": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Parametros": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParametrosSimulador"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Entrega": {
+        "type": "object",
+        "properties": {
+          "Codigodpto": {
+            "type": "string",
+            "nullable": true
+          },
+          "Ciudad": {
+            "type": "string",
+            "nullable": true
+          },
+          "Cantidad": {
+            "type": "string",
+            "nullable": true
+          },
+          "Cantidad_descuento": {
+            "type": "string",
+            "nullable": true
+          },
+          "Porcentaje_descuento": {
+            "type": "string",
+            "nullable": true
+          },
+          "Bvi": {
+            "type": "string",
+            "nullable": true
+          },
+          "Idgruporango": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParametroSimulador": {
+        "type": "object",
+        "properties": {
+          "Clave": {
+            "type": "string",
+            "nullable": true
+          },
+          "Valor": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParametrosSimulador": {
+        "type": "object",
+        "properties": {
+          "Producto": {
+            "type": "string",
+            "nullable": true
+          },
+          "Parametro": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParametroSimulador"
+            },
+            "nullable": true
+          },
+          "Entregas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Entrega"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PricingRequest": {
+        "type": "object",
+        "properties": {
+          "PROPIEDADES": {
+            "$ref": "#/components/schemas/Propiedades"
+          },
+          "DATOS_SIMULADOR": {
+            "$ref": "#/components/schemas/DatosSimulador"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Propiedades": {
+        "type": "object",
+        "properties": {
+          "Sistema_origen_peticion": {
+            "type": "string",
+            "nullable": true
+          },
+          "Operacion": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterContractInput": {
+        "required": [
+          "CLIENTE",
+          "CONTACTO",
+          "CONTRATO",
+          "CONTRATO_PRODUCTO",
+          "DIRECCIONES",
+          "PROPIEDADES"
+        ],
+        "type": "object",
+        "properties": {
+          "PROPIEDADES": {
+            "$ref": "#/components/schemas/RegisterContractInputProperties"
+          },
+          "CLIENTE": {
+            "$ref": "#/components/schemas/RegisterContractInputClient"
+          },
+          "CONTACTO": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegisterContractInputContact"
+            }
+          },
+          "CONTRATO": {
+            "$ref": "#/components/schemas/RegisterContractInputContract"
+          },
+          "CONTRATO_PRODUCTO": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegisterContractInputContractProduct"
+            }
+          },
+          "DIRECCIONES": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegisterContractInputAddress"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterContractInputAddress": {
+        "type": "object",
+        "properties": {
+          "CLI_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "ZON_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "ZON_MUN_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "ZON_MUN_DEP_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIRECCION": {
+            "type": "string",
+            "nullable": true
+          },
+          "TIPO": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterContractInputBillingCondition": {
+        "required": [
+          "CONDICION_FACTURACION",
+          "VALOR"
+        ],
+        "type": "object",
+        "properties": {
+          "CONDICION_FACTURACION": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "VALOR": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterContractInputClient": {
+        "required": [
+          "IDCIUDAD",
+          "IDCLIENTE_SALESFORCE",
+          "IDTIPODOCUMENTO",
+          "NROIDENTIFICACION",
+          "NROVERIFICACION"
+        ],
+        "type": "object",
+        "properties": {
+          "IDCLIENTE_SALESFORCE": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "CODIGO_UNICO": {
+            "type": "string",
+            "nullable": true
+          },
+          "NROIDENTIFICACION": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "RAZONSOCIAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "NROVERIFICACION": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "IDCIUDAD": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "TELEFONO1": {
+            "type": "string",
+            "nullable": true
+          },
+          "TELEFONO2": {
+            "type": "string",
+            "nullable": true
+          },
+          "FAX": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIRECCION": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDTIPODOCUMENTO": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "REGIMENTRIBUTARIO": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDACTIVIDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDSEGMENTOCLIENTEVE": {
+            "type": "string",
+            "nullable": true
+          },
+          "APLICACOA": {
+            "type": "string",
+            "nullable": true
+          },
+          "ESPRINCIPAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_TYPE": {
+            "type": "string",
+            "nullable": true
+          },
+          "ZON_MUN_DEP_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "FEC_INGRESO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CARACTERISTICAS_REGIMEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "GRU_ECO_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "E_MAIL": {
+            "type": "string",
+            "nullable": true
+          },
+          "EMP_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "EMP_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIGITO_CHEQUEO": {
+            "type": "string",
+            "nullable": true
+          },
+          "ESTATAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "CAR_EMP_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "CAR_EMP_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "VEN_EMP_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "VEN_EMP_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "NOMINA_CLIENTES": {
+            "type": "string",
+            "nullable": true
+          },
+          "MER_EMP_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "MER_EMP_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "ACTIVOS": {
+            "type": "string",
+            "nullable": true
+          },
+          "TAMANO_POR_ACTIVOS": {
+            "type": "string",
+            "nullable": true
+          },
+          "MILLESIME_ANUAL": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterContractInputContact": {
+        "type": "object",
+        "properties": {
+          "CONSECUTIVO": {
+            "type": "string",
+            "nullable": true
+          },
+          "COA_TYPE": {
+            "type": "string",
+            "nullable": true
+          },
+          "APELLIDO": {
+            "type": "string",
+            "nullable": true
+          },
+          "NOMBRE": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIRECCION": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDCIUDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "CODIGODPTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "GENERO": {
+            "type": "string",
+            "nullable": true
+          },
+          "TELEFONO": {
+            "type": "string",
+            "nullable": true
+          },
+          "TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "FAX": {
+            "type": "string",
+            "nullable": true
+          },
+          "E_MAIL": {
+            "type": "string",
+            "nullable": true
+          },
+          "CARGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "FEC_NACIMIENTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "AFA_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "AFA_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "AFA_SUC": {
+            "type": "string",
+            "nullable": true
+          },
+          "PUN_CONSECUTIVO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "PRO_CONSECUTIVO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DE_PAG_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DE_DES_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DE_FAC_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DE_COM_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "ZON_PRO_CL_CONSECUTIVO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIT_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "SOC_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "ESTADO": {
+            "type": "string",
+            "nullable": true
+          },
+          "MOT_EST_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "REFERIDO": {
+            "type": "string",
+            "nullable": true
+          },
+          "COMERCIAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "INGRESO_WEB": {
+            "type": "string",
+            "nullable": true
+          },
+          "ESTADO_WEB": {
+            "type": "string",
+            "nullable": true
+          },
+          "SLX_ADDRESSID": {
+            "type": "string",
+            "nullable": true
+          },
+          "NUEVO_SISTEMA": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterContractInputContract": {
+        "type": "object",
+        "properties": {
+          "IDCONTRATO": {
+            "type": "string",
+            "nullable": true
+          },
+          "PLAZO": {
+            "type": "string",
+            "nullable": true
+          },
+          "COMISION": {
+            "type": "string",
+            "nullable": true
+          },
+          "NROCONTRATO": {
+            "type": "string",
+            "nullable": true
+          },
+          "FECHACONTRATO": {
+            "type": "string",
+            "nullable": true
+          },
+          "ESTADO": {
+            "type": "string",
+            "nullable": true
+          },
+          "APLICAIVA": {
+            "type": "string",
+            "nullable": true
+          },
+          "TIPOCOMISION": {
+            "type": "string",
+            "nullable": true
+          },
+          "NROENTREGASREPOSICION": {
+            "type": "string",
+            "nullable": true
+          },
+          "ENTREGAREPOSICION": {
+            "type": "string",
+            "nullable": true
+          },
+          "POR_MORA": {
+            "type": "string",
+            "nullable": true
+          },
+          "FEC_HASTA_CONTRATO": {
+            "type": "string",
+            "nullable": true
+          },
+          "FEC_ENVIO_CLIENTE": {
+            "type": "string",
+            "nullable": true
+          },
+          "FEC_RECIBO_CLIENTE": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "TIPOOPERACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "PROYECTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CONTRATO": {
+            "type": "string",
+            "nullable": true
+          },
+          "PERMITE_DOBLE_CP": {
+            "type": "string",
+            "nullable": true
+          },
+          "DATOS_CONDICIONES_FACTURACION": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegisterContractInputBillingCondition"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterContractInputContractProduct": {
+        "required": [
+          "IDSALESFORCE"
+        ],
+        "type": "object",
+        "properties": {
+          "IDSALESFORCE": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "IDCLIENTE": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDDETALLECONTRATO": {
+            "type": "string",
+            "nullable": true
+          },
+          "TIPOCOMISION": {
+            "type": "string",
+            "nullable": true
+          },
+          "VALORCOMISION": {
+            "type": "string",
+            "nullable": true
+          },
+          "FEC_DESDE": {
+            "type": "string",
+            "nullable": true
+          },
+          "FEC_HASTA": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDCONTRATO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DE_COM_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "PRU_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "PLAZOPAGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIA_PAGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CON_PAG_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CON_FAC_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "PRU_CODIGO_FACTURADO": {
+            "type": "string",
+            "nullable": true
+          },
+          "PRU_CODIGO_PRODUCIDO": {
+            "type": "string",
+            "nullable": true
+          },
+          "SALDOCONTRATO": {
+            "type": "string",
+            "nullable": true
+          },
+          "ESTADO": {
+            "type": "string",
+            "nullable": true
+          },
+          "HER_NEG_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "VAL_ADICION": {
+            "type": "string",
+            "nullable": true
+          },
+          "CON_PRO_ACTIVO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CON_PRO_CAUSAL_INA": {
+            "type": "string",
+            "nullable": true
+          },
+          "CON_PRO_VALFACIALMIN": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_TYPE_WEB": {
+            "type": "string",
+            "nullable": true
+          },
+          "INGRESO_WEB": {
+            "type": "string",
+            "nullable": true
+          },
+          "IND_EMAIL": {
+            "type": "string",
+            "nullable": true
+          },
+          "IND_IMPRESION": {
+            "type": "string",
+            "nullable": true
+          },
+          "EMP_ESP_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "EMP_ESP_CODIGO2": {
+            "type": "string",
+            "nullable": true
+          },
+          "VENC_ESPECIAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDOPORTUNIDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDPRODUCTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "COBRO_TARJETA_REEX_CLIENTE": {
+            "type": "string",
+            "nullable": true
+          },
+          "COBRO_ENTREGA_TREEX_CLIENTE": {
+            "type": "string",
+            "nullable": true
+          },
+          "NROREPOSICIONES": {
+            "type": "string",
+            "nullable": true
+          },
+          "VALORREPOSICIONES": {
+            "type": "string",
+            "nullable": true
+          },
+          "NROENTREGASREPOSICION": {
+            "type": "string",
+            "nullable": true
+          },
+          "VALORENTREGAREPOSICION": {
+            "type": "string",
+            "nullable": true
+          },
+          "NROTARJETAS": {
+            "type": "string",
+            "nullable": true
+          },
+          "VALORTARJETAS": {
+            "type": "string",
+            "nullable": true
+          },
+          "TOPECOMPRAMES": {
+            "type": "string",
+            "nullable": true
+          },
+          "BLOQUEADO": {
+            "type": "string",
+            "nullable": true
+          },
+          "TIPOEVENTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "USUARIOINTERNO": {
+            "type": "string",
+            "nullable": true
+          },
+          "USUARIOEXTERNO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CAUSALBLOQDESBID": {
+            "type": "string",
+            "nullable": true
+          },
+          "APLICANEXOZ": {
+            "type": "string",
+            "nullable": true
+          },
+          "TIPOESTAMPILLA": {
+            "type": "string",
+            "nullable": true
+          },
+          "VALORESTAMPILLA": {
+            "type": "string",
+            "nullable": true
+          },
+          "TIPOOPORTUNIDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "OPORTUNIDADPADRE": {
+            "type": "string",
+            "nullable": true
+          },
+          "MUNICIPIOCANT": {
+            "type": "string",
+            "nullable": true
+          },
+          "TIPPERSONANEXOZ": {
+            "type": "string",
+            "nullable": true
+          },
+          "REVISORIAFISCAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "VALOR_CONTRATO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DATOS_SERVICIOS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegisterContractInputServiceData"
+            },
+            "nullable": true
+          },
+          "ENTREGAS": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegisterContractInputDelivery"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterContractInputDelivery": {
+        "type": "object",
+        "properties": {
+          "CODIGODPTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CIUDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "CANTIDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "CANTIDAD_DESCUENTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "PORCENTAJE_DESCUENTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "BVI": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDGRUPORANGO": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterContractInputProperties": {
+        "required": [
+          "OPERACION",
+          "SISTEMA_ORIGEN_PETICION"
+        ],
+        "type": "object",
+        "properties": {
+          "SISTEMA_ORIGEN_PETICION": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "OPERACION": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterContractInputServiceData": {
+        "type": "object",
+        "properties": {
+          "SERVICIO": {
+            "type": "string",
+            "nullable": true
+          },
+          "VALOR": {
+            "type": "string",
+            "nullable": true
+          },
+          "VALOR_DESCUENTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CANTIDAD_DESCUENTO": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateClientContactInput": {
+        "required": [
+          "CLIENTE",
+          "CONTACTO",
+          "PROPIEDADES"
+        ],
+        "type": "object",
+        "properties": {
+          "PROPIEDADES": {
+            "$ref": "#/components/schemas/UpdateClientContactInputProperties"
+          },
+          "CONTACTO": {
+            "$ref": "#/components/schemas/UpdateClientContactInputClient"
+          },
+          "CLIENTE": {
+            "$ref": "#/components/schemas/Cliente"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateClientContactInputClient": {
+        "type": "object",
+        "properties": {
+          "CONSECUTIVO": {
+            "type": "string",
+            "nullable": true
+          },
+          "COA_TYPE": {
+            "type": "string",
+            "nullable": true
+          },
+          "APELLIDO": {
+            "type": "string",
+            "nullable": true
+          },
+          "NOMBRE": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIRECCION": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDCIUDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "CODIGODPTO": {
+            "type": "string",
+            "nullable": true
+          },
+          "GENERO": {
+            "type": "string",
+            "nullable": true
+          },
+          "TELEFONO": {
+            "type": "string",
+            "nullable": true
+          },
+          "TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "E_MAIL": {
+            "type": "string",
+            "nullable": true
+          },
+          "CARGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "FAX": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "DE_PAG_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DE_DES_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DE_FAC_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "DE_COM_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "SLX_ADDRESSID": {
+            "type": "string",
+            "nullable": true
+          },
+          "PRO_CONSECUTIVO": {
+            "type": "string",
+            "nullable": true
+          },
+          "ESTADO": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateClientContactInputProperties": {
+        "required": [
+          "OPERACION",
+          "SISTEMA_ORIGEN_PETICION"
+        ],
+        "type": "object",
+        "properties": {
+          "SISTEMA_ORIGEN_PETICION": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "OPERACION": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateClientInput": {
+        "required": [
+          "CLIENTE",
+          "PROPIEDADES"
+        ],
+        "type": "object",
+        "properties": {
+          "PROPIEDADES": {
+            "$ref": "#/components/schemas/UpdateClientInputProperties"
+          },
+          "CLIENTE": {
+            "$ref": "#/components/schemas/UpdateClientInputClient"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateClientInputClient": {
+        "required": [
+          "CODIGO_UNICO",
+          "IDTIPODOCUMENTO",
+          "NROIDENTIFICACION"
+        ],
+        "type": "object",
+        "properties": {
+          "CODIGO_UNICO": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "IDTIPODOCUMENTO": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "NROIDENTIFICACION": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "RAZONSOCIAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "NROVERIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDCIUDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "TELEFONO1": {
+            "type": "string",
+            "nullable": true
+          },
+          "TELEFONO2": {
+            "type": "string",
+            "nullable": true
+          },
+          "FAX": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIRECCION": {
+            "type": "string",
+            "nullable": true
+          },
+          "REGIMENTRIBUTARIO": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDACTIVIDAD": {
+            "type": "string",
+            "nullable": true
+          },
+          "IDSEGMENTOCLIENTEVE": {
+            "type": "string",
+            "nullable": true
+          },
+          "APLICACOA": {
+            "type": "string",
+            "nullable": true
+          },
+          "ESPRINCIPAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_TYPE": {
+            "type": "string",
+            "nullable": true
+          },
+          "ZON_MUN_DEP_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "FEC_INGRESO": {
+            "type": "string",
+            "nullable": true
+          },
+          "CARACTERISTICAS_REGIMEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "GRU_ECO_CODIGO": {
+            "type": "string",
+            "nullable": true
+          },
+          "E_MAIL": {
+            "type": "string",
+            "nullable": true
+          },
+          "EMP_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "EMP_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "CLI_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "DIGITO_CHEQUEO": {
+            "type": "string",
+            "nullable": true
+          },
+          "ESTATAL": {
+            "type": "string",
+            "nullable": true
+          },
+          "CAR_EMP_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "CAR_EMP_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "VEN_EMP_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "VEN_EMP_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "NOMINA_CLIENTES": {
+            "type": "string",
+            "nullable": true
+          },
+          "MER_EMP_TIP_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "MER_EMP_NUM_IDENTIFICACION": {
+            "type": "string",
+            "nullable": true
+          },
+          "ACTIVOS": {
+            "type": "string",
+            "nullable": true
+          },
+          "TAMANO_POR_ACTIVOS": {
+            "type": "string",
+            "nullable": true
+          },
+          "MILLESIME_ANUAL": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateClientInputProperties": {
+        "required": [
+          "OPERACION",
+          "SISTEMA_ORIGEN_PETICION"
+        ],
+        "type": "object",
+        "properties": {
+          "SISTEMA_ORIGEN_PETICION": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "OPERACION": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
